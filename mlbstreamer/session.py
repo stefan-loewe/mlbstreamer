@@ -355,12 +355,12 @@ class BAMStreamSessionMixin(object):
                     not media_id
                     or (item.get("mediaId", "").lower() == media_id)
                 ):
-                    logger.debug("found preferred stream")
+                    logger.debug("found preferred stream = %s" % item)
                     yield Media(item)
-            else:
-                if len(epg["items"]):
-                    logger.debug("using non-preferred stream")
-                    yield Media(epg["items"][0])
+        else:
+            if len(epg["items"]):
+                logger.debug("using non-preferred stream")
+                yield Media(epg["items"][0])
         # raise StopIteration
 
 

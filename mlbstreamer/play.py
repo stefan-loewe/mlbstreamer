@@ -41,6 +41,8 @@ def play_stream(game_specifier, resolution=None,
                 output=None,
                 verbose=0):
 
+    logger.info("call letters = %s" % call_letters)
+
     live = False
     team = None
     game_number = 1
@@ -334,6 +336,7 @@ def main():
                         nargs="?", metavar="offset_from_game_start",
                         type=begin_arg_to_offset,
                         const=0)
+    parser.add_argument("-c", "--call-letters", help="call letters of the preferred stream, e.g., STO for Cleveland Indians video, or WTAM for Cleveland Indians audio")
     parser.add_argument("-r", "--resolution", help="stream resolution",
                         default=config.settings.profile.default_resolution)
     parser.add_argument("-s", "--save-stream", help="save stream to file",
@@ -376,6 +379,7 @@ def main():
             options.resolution,
             offset = options.begin,
             preferred_stream = preferred_stream,
+            call_letters = options.call_letters,
             output = options.save_stream,
             verbose = options.verbose
         )
