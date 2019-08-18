@@ -351,7 +351,7 @@ class BAMStreamSessionMixin(object):
                     or (item.get("type", "").lower() == preferred_stream) # this holds "HOME" or "AWAY" for radio streams
                 ) and (
                     not call_letters
-                    or (item.get("callLetters", "").lower() == call_letters)
+                    or (item.get("callLetters", "").lower() == call_letters.lower())
                 ) and (
                     not media_id
                     or (item.get("mediaId", "").lower() == media_id)
