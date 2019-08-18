@@ -347,7 +347,8 @@ class BAMStreamSessionMixin(object):
         for epg in epgs:
             for item in epg["items"]:
                 if (not preferred_stream
-                    or (item.get("mediaFeedType", "").lower() == preferred_stream)
+                    or (item.get("mediaFeedType", "").lower() == preferred_stream) # this holds "HOME" or "AWAY" for video streams
+                    or (item.get("type", "").lower() == preferred_stream) # this holds "HOME" or "AWAY" for radio streams
                 ) and (
                     not call_letters
                     or (item.get("callLetters", "").lower() == call_letters)
